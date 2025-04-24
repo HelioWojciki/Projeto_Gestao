@@ -1,0 +1,5 @@
+com\helio\App.class
+com\helio\ui\Menu.class
+com\helio\utilities\Pausa.class
+com\helio\ui\MenuPessoa.class
+com\helio\utilities\ClearScreen.class

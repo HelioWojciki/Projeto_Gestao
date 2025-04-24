@@ -2,16 +2,19 @@ package com.helio.ui;
 
 import static com.helio.utilities.ClearScreen.limparTela;
 import static com.helio.utilities.Pausa.pausarExecucao;
+import static com.helio.ui.SubmenuPessoa.submenuPessoa;
+import static com.helio.utilities.LinhaPadronizada.linhaPadronizada;
 
 import java.util.Scanner;
 
 public class Menu {
 
     public static void menu(Scanner scanner) {
+
         int opcao = -1;      
         do {
             limparTela();
-            System.out.println("--------------------MENU--------------------");
+            linhaPadronizada("MENU PRINCIPAL");
             System.out.println("1. Pessoa");
             System.out.println("2. ");
             System.out.println("4. ");
@@ -20,20 +23,11 @@ public class Menu {
             System.out.print("\nEscolha uma opção: ");
              
             opcao = scanner.nextInt();
-            scanner.nextLine(); // limpa o scanner após nextInt()
+            scanner.nextLine();
 
             switch (opcao) {
-                case 1:                    
-                    limparTela(); // criar amanhã os submenus em classe destinta
-                    
-                    System.out.println("1. Adicionar Pessoa");
-                    System.out.println("2. Listar Pessoa");
-                    System.out.println("3. Editar Pessoa");
-                    System.out.println("4. Remover Pessoa\n");
-                    System.out.println("0. Voltar ao menu principal");
-                    System.out.print("\nEscolha uma opção: ");
-
-                    pausarExecucao(scanner);
+                case 1:
+                    submenuPessoa(scanner);
                     break;                    
                 case 2:
                     limparTela();
