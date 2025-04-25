@@ -1,10 +1,10 @@
 package com.helio.utilities;
 
-public class LinhaPadronizada {
+public class CabecalhoPadrao {
     
     public static void linhaPadronizada(String texto) {
-        int largura = 80; // defina a largura desejada
-        int espacos = largura - texto.length() - 4; // subtrai o espaço para as bordas e o texto
+        int largura = 80; // define a largura
+        int espacos = largura - texto.length() - 4; 
         int espacosEsquerda = espacos / 2;
         int espacosDireita = espacos - espacosEsquerda;
     

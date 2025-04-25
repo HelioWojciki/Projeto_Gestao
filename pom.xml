@@ -49,6 +49,19 @@
         <artifactId>jakarta.persistence-api</artifactId>
         <version>3.1.0</version>
     </dependency>   
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>8.0.0.Final</version>
+    </dependency>
+
+    <!-- talvez use essa validação depois -->
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <version>3.0.2</version>
+    </dependency>
   </dependencies>
 
   <build>

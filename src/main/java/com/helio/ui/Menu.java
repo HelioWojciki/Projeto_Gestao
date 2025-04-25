@@ -1,9 +1,9 @@
 package com.helio.ui;
 
-import static com.helio.utilities.ClearScreen.limparTela;
+import static com.helio.utilities.ResetaTerminal.limparTela;
 import static com.helio.utilities.Pausa.pausarExecucao;
 import static com.helio.ui.SubmenuPessoa.submenuPessoa;
-import static com.helio.utilities.LinhaPadronizada.linhaPadronizada;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizada;
 
 import java.util.Scanner;
 
@@ -25,6 +25,7 @@ public class Menu {
             opcao = scanner.nextInt();
             scanner.nextLine();
 
+            // Criado dubmenus para organizar
             switch (opcao) {
                 case 1:
                     submenuPessoa(scanner);

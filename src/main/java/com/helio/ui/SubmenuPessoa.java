@@ -1,10 +1,15 @@
 package com.helio.ui;
 
-import static com.helio.utilities.ClearScreen.limparTela;
+import static com.helio.utilities.ResetaTerminal.limparTela;
 import static com.helio.utilities.Pausa.pausarExecucao;
-import static com.helio.utilities.LinhaPadronizada.linhaPadronizada;
-import static com.helio.utilities.Validation.validarNome;
-import static com.helio.utilities.Validation.validarIdade;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizada;
+
+
+import static com.helio.utilities.Validacao.validarNome;
+import static com.helio.utilities.Validacao.validarIdade;
+import static com.helio.utilities.Validacao.validarEndereco;
+import static com.helio.utilities.Validacao.validarCpf;
+import static com.helio.dao.PessoaDao.criarPersistenciaPessoa;
 
 import java.util.Scanner;
 
@@ -25,9 +30,13 @@ public class SubmenuPessoa {
             opcao = scanner.nextInt();
             scanner.nextLine(); // limpa o scanner após nextInt()
 
+            String nome;
+            int idade;
+            String endereco;
+            String cpf;
+
             switch (opcao) {
-                case 1:
-                    String nome = null;
+                case 1:                    
                     do {
                         // While sempre verdadeiro, até que o validarNome() retorne ok executando o break
                         limparTela();
@@ -38,22 +47,71 @@ public class SubmenuPessoa {
                             validarNome(nome);
                             break; 
                         } catch (IllegalArgumentException e) {
+                            limparTela();
                             System.out.println(e.getMessage());
                             pausarExecucao(scanner);
                         }
                     } while (true);
 
-                    // essa validação de idade não precisa de loop, porque já está validando no método validarIdade()                    
-                    validarIdade(scanner);
 
-//================parei aqui, funcionando=====================================================
-                    System.out.println("Digite o endereço da pessoa: ");
-                    String endereco = scanner.nextLine();
+                    do {
+                        try {
+                            limparTela();
+                            linhaPadronizada("CADASTRAR PESSOA");
+                            System.out.println("Digite a idade da pessoa: ");
+                            idade = scanner.nextInt();
+                            scanner.nextLine();
+                            validarIdade(idade);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            limparTela();
+                            System.out.println(e.getMessage());
+                            pausarExecucao(scanner);
+                        }
+                        break;
+                    } while (true);
 
-                    System.out.println("Digite o CPF da pessoa: ");
-                    String cpf = scanner.nextLine();
 
-                    break;                    
+
+                    do {
+                        try {
+                            limparTela();
+                            linhaPadronizada("CADASTRAR PESSOA");
+                            System.out.println("Digite o endereço da pessoa: ");
+                            endereco = scanner.nextLine();
+                            validarEndereco(endereco);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            limparTela();
+                            System.out.println(e.getMessage());
+                            pausarExecucao(scanner);                            
+                        }
+                    } while (true);
+
+
+                    do {
+                        try {
+                            limparTela();
+                            linhaPadronizada("CADASTRAR PESSOA");
+                            System.out.println("Digite o CPF da pessoa: ");
+                            cpf = scanner.nextLine();
+                            validarCpf(cpf);
+                            break;
+                        } catch (IllegalArgumentException e) {
+                            limparTela();
+                            System.out.println(e.getMessage());
+                            pausarExecucao(scanner);
+                        }                 
+                    } while (true);
+
+
+
+                    try {
+                        criarPersistenciaPessoa(opcao, nome, opcao, endereco, cpf);
+                    } catch (Exception e) {
+                        System.out.println("Erro...");
+                    }
+                        
                 case 2:
                     limparTela();
                     System.out.println("Listar Pessoa");

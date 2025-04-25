@@ -1,6 +1,6 @@
 package com.helio.utilities;
 
-public class ClearScreen {
+public class ResetaTerminal {
     public static void limparTela() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor(); 
