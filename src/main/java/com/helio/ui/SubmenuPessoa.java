@@ -2,16 +2,26 @@ package com.helio.ui;
 
 import static com.helio.utilities.ResetaTerminal.limparTela;
 import static com.helio.utilities.Pausa.pausarExecucao;
-import static com.helio.utilities.CabecalhoPadrao.linhaPadronizada;
-
-
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaTitulo;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaFim;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaMeio;
 import static com.helio.utilities.Validacao.validarNome;
 import static com.helio.utilities.Validacao.validarIdade;
 import static com.helio.utilities.Validacao.validarEndereco;
+import static com.helio.utilities.Validacao.entradaIntMenu;
 import static com.helio.utilities.Validacao.validarCpf;
 import static com.helio.dao.PessoaDao.criarPersistenciaPessoa;
+import static com.helio.dao.PessoaDao.removerPessoa;
+import static com.helio.dao.PessoaDao.atualizarPessoa;
+import static com.helio.dao.PessoaDao.buscarPessoa;
+import static com.helio.dao.PessoaDao.buscarTodasAsPessoas;
+import static com.helio.ui.InternoSubMenuPessoa.internoSubMenuPessoa;
 
 import java.util.Scanner;
+
+import com.helio.models.Pessoa;
+
+
 
 public class SubmenuPessoa {
 
@@ -19,19 +29,18 @@ public class SubmenuPessoa {
         int opcao = -1;      
         do {
             limparTela();
-            linhaPadronizada("SUBMENU PESSOA");
-            System.out.println("1. Cadastrar Pessoa");
-            System.out.println("2. Listar Pessoa");
-            System.out.println("3. Editar Pessoa");
-            System.out.println("4. Remover Pessoa\n");
+            linhaPadronizadaTitulo("SUBMENU PESSOA");
+            System.out.println("    1. Cadastrar Pessoa");
+            System.out.println("    2. Buscar uma Pessoa");
+            System.out.println("    3. Listar Todas as Pessoas");
+            System.out.println("    4. Remover Pessoa");
+            System.out.println("    5. Atualizar Pessoa\n");
+
             System.out.println("0. Voltar ao Menu Principal");
-            System.out.print("\nEscolha uma opção: ");
-            
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // limpa o scanner após nextInt()
+            opcao = entradaIntMenu(scanner, "\nEscolha uma opção: ");
 
             String nome;
-            int idade;
+            int idade = -1;
             String endereco;
             String cpf;
 
@@ -40,7 +49,7 @@ public class SubmenuPessoa {
                     do {
                         // While sempre verdadeiro, até que o validarNome() retorne ok executando o break
                         limparTela();
-                        linhaPadronizada("CADASTRAR PESSOA");
+                        linhaPadronizadaTitulo("CADASTRAR PESSOA");
                         System.out.println("Digite o nome da pessoa: ");
                         nome = scanner.nextLine();
                         try {
@@ -57,7 +66,7 @@ public class SubmenuPessoa {
                     do {
                         try {
                             limparTela();
-                            linhaPadronizada("CADASTRAR PESSOA");
+                            linhaPadronizadaTitulo("CADASTRAR PESSOA");
                             System.out.println("Digite a idade da pessoa: ");
                             idade = scanner.nextInt();
                             scanner.nextLine();
@@ -76,7 +85,7 @@ public class SubmenuPessoa {
                     do {
                         try {
                             limparTela();
-                            linhaPadronizada("CADASTRAR PESSOA");
+                            linhaPadronizadaTitulo("CADASTRAR PESSOA");
                             System.out.println("Digite o endereço da pessoa: ");
                             endereco = scanner.nextLine();
                             validarEndereco(endereco);
@@ -92,7 +101,7 @@ public class SubmenuPessoa {
                     do {
                         try {
                             limparTela();
-                            linhaPadronizada("CADASTRAR PESSOA");
+                            linhaPadronizadaTitulo("CADASTRAR PESSOA");
                             System.out.println("Digite o CPF da pessoa: ");
                             cpf = scanner.nextLine();
                             validarCpf(cpf);
@@ -104,28 +113,117 @@ public class SubmenuPessoa {
                         }                 
                     } while (true);
 
-
-
+                    // finaliza persistindo o dado no banco
                     try {
-                        criarPersistenciaPessoa(opcao, nome, opcao, endereco, cpf);
+                        criarPersistenciaPessoa(0, nome, idade, endereco, cpf);
                     } catch (Exception e) {
-                        System.out.println("Erro...");
+                        System.out.println(e.getMessage());
+                        pausarExecucao(scanner);
                     }
+                    break;
                         
                 case 2:
                     limparTela();
-                    System.out.println("Listar Pessoa");
-                    pausarExecucao(scanner);
+                    linhaPadronizadaTitulo("BUSCAR PESSOA");
+                    //--------teste 1 id
+                    int id = -1;
+                    try {
+                        System.out.println("Digite o ID da pessoa pra buscar: ");
+                        id = scanner.nextInt();
+                        scanner.nextLine();
+                    } catch (Exception e) {
+                        System.out.println("Falha na inserção do dado, tente novamente.");
+                    }
+
+                    //caso retorne null dessa busca, if é verdadeiro rodando a mnsg e saindo
+                    Pessoa pessoaEncontrada = null;
+                    pessoaEncontrada = buscarPessoa(id);
+                    if (pessoaEncontrada == null){
+                        limparTela();
+                        System.out.println("Pessoa com esse id " + id + " não encontrada!");
+                        pausarExecucao(scanner);
+                        break;
+                    }
+
+                    limparTela();
+                    linhaPadronizadaTitulo("BUSCAR PESSOA");
+                    System.out.println("Encontrado(a) com sucesso o(a): " + pessoaEncontrada.getNome());
+                    linhaPadronizadaFim();
+                    pausarExecucao(scanner);                    
                     break;
+                    
+                    
+
                 case 3:
                     limparTela();
-                    System.out.println("Editar Pessoa");
+                    System.out.println("Listar Todas as Pessoas");
+                    // System.out.println(buscarTodasAsPessoas());
+                    int quantidadePessoas = buscarTodasAsPessoas().size();
+                    int contador = 0;
+                    for (Pessoa pessoa : buscarTodasAsPessoas()) {    
+                        if (contador == 0) {
+                            linhaPadronizadaTitulo("LISTA DE PESSOAS"); 
+                        }
+
+                        System.out.println("ID: " + pessoa.getId() + ".");
+                        System.out.println("Nome: " + pessoa.getNome() + ".");
+                        System.out.println("CPF: " + pessoa.getCpf() + ".");
+                        System.out.println("Endereço: " + pessoa.getEndereco() + ".");
+                        System.out.println("idade: " + pessoa.getIdade() + " anos.");
+                        
+                        contador++;
+                        if (contador < quantidadePessoas) {
+                            linhaPadronizadaMeio();
+                        }
+                    }
+                    linhaPadronizadaFim();
+
                     pausarExecucao(scanner);
                     break;
+                    //editar pessoa
                 case 4:
                     limparTela();
-                    System.out.println("Remover Pessoa");
+                    linhaPadronizadaTitulo("REMOVER PESSOA");
+
+                    System.out.println("Digite o ID da pessoa que deseja remover: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    pessoaEncontrada = buscarPessoa(id);
+                    if (pessoaEncontrada == null){
+                        limparTela();
+                        linhaPadronizadaTitulo("REMOVER PESSOA");
+                        System.out.println("Pessoa com esse id " + id + " não encontrada!");
+                        pausarExecucao(scanner);
+                        break;
+                    }
+                    //chamo de fato pessoaDao|removerPessoa()
+                    removerPessoa(pessoaEncontrada.getId());
+                    limparTela();
+                    linhaPadronizadaTitulo("REMOVER PESSOA");
+                    System.out.println("Pessoa " + pessoaEncontrada.getNome()+ " removido(a) com sucesso!");
+                    linhaPadronizadaFim();
                     pausarExecucao(scanner);
+                    break;
+                case 5:
+                    limparTela();
+                    linhaPadronizadaTitulo("ATUALIZAR CADASTRO DE PESSOA");
+                    System.out.println("Digite o ID da pessoa: ");
+                    id = scanner.nextInt();
+                    scanner.nextLine();
+                    pessoaEncontrada = buscarPessoa(id);
+                    if (pessoaEncontrada == null){
+                        limparTela();
+                        linhaPadronizadaTitulo("ATUALIZAR CADASTRO DE PESSOA");
+                        System.out.println("Pessoa com esse id " + id + " não encontrada!");
+                        pausarExecucao(scanner);
+                        break;
+                    }
+                    //novos dados desta pessoa pra atualizar no banco
+                    //atualizar a pessoa feito para CPF falta os outros
+                    System.out.println();
+                    //chama internoSubMenu()
+                    internoSubMenuPessoa(pessoaEncontrada, scanner);//passo a pessoa p/ alterar
+                    atualizarPessoa(pessoaEncontrada);//merge busca o ID automaticamente Obj
                     break;
                 case 0:
                     limparTela();
