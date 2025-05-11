@@ -1,0 +1,34 @@
+# Diff Summary
+
+Date : 2025-05-11 01:31:45
+
+Directory c:\\Users\\helio\\OneDrive\\Área de Trabalho\\Estudando Programação Avançada\\3\\gestaoempresarial
+
+Total : 4 files,  91 codes, -1 comments, 22 blanks, all 112 lines
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
+
+## Languages
+| language | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| Java | 4 | 91 | -1 | 22 | 112 |
+
+## Directories
+| path | files | code | comment | blank | total |
+| :--- | ---: | ---: | ---: | ---: | ---: |
+| . | 4 | 91 | -1 | 22 | 112 |
+| src | 2 | 73 | -1 | 22 | 94 |
+| src\\main | 2 | 73 | -1 | 22 | 94 |
+| src\\main\\java | 2 | 73 | -1 | 22 | 94 |
+| src\\main\\java\\com | 2 | 73 | -1 | 22 | 94 |
+| src\\main\\java\\com\\helio | 2 | 73 | -1 | 22 | 94 |
+| src\\main\\java\\com\\helio\\dao | 1 | 30 | 0 | 8 | 38 |
+| src\\main\\java\\com\\helio\\ui | 1 | 43 | -1 | 14 | 56 |
+| target | 2 | 18 | 0 | 0 | 18 |
+| target\\classes | 2 | 18 | 0 | 0 | 18 |
+| target\\classes\\com | 2 | 18 | 0 | 0 | 18 |
+| target\\classes\\com\\helio | 2 | 18 | 0 | 0 | 18 |
+| target\\classes\\com\\helio\\dao | 1 | 6 | 0 | 0 | 6 |
+| target\\classes\\com\\helio\\ui | 1 | 12 | 0 | 0 | 12 |
+
+[Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

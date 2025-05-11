@@ -16,8 +16,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 
-public class ContaPoupancaDao {
-    
+public class ContaPoupancaDao {    
     // gerencia os dados de uma pessoa já existente para cadastrar a conta
     public static ContaPoupanca criarPersistenciaContaPoupanca (Pessoa pessoa, double saldoInicial, String conta, String agencia){
         
@@ -48,7 +47,7 @@ public class ContaPoupancaDao {
         );
         query.setParameter("conta", conta); // informa para a query
 
-        // se nao achar ele retorna NoResultException e não null
+        // se não achar ele retorna NoResultException e não null
         return query.getSingleResult(); // apenas retornar, quem vai tratar é o SubmenuContaPoupanca, melhor
     }
 

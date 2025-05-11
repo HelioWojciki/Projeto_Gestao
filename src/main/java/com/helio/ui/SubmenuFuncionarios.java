@@ -1,21 +1,24 @@
 package com.helio.ui;
 
 import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaTitulo;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaFim;
+import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaMeio;
 import static com.helio.utilities.Pausa.pausarExecucao;
 import static com.helio.utilities.ResetaTerminal.limparTela;
 import static com.helio.utilities.Validacao.entradaDouble;
 import static com.helio.utilities.Validacao.entradaInt;
 import static com.helio.utilities.Validacao.entradaIntMenu;
-import static com.helio.utilities.Validacao.entradaString;
 import static com.helio.utilities.Validacao.entradaStringCargo;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.helio.models.ContaPoupanca;
+import com.helio.models.Empresa;
 import com.helio.models.Funcionario;
 import com.helio.models.Pessoa;
 import com.helio.dao.ContaPoupancaDao;
+import com.helio.dao.EmpresaDao;
 import com.helio.dao.FuncionarioDao;
 import com.helio.dao.PessoaDao; 
 
@@ -25,6 +28,7 @@ public class SubmenuFuncionarios {
     PessoaDao pessoaDao = new PessoaDao();
     FuncionarioDao funcionarioDao = new FuncionarioDao();
     ContaPoupancaDao contaPoupancaDao = new ContaPoupancaDao();
+    EmpresaDao empresaDao = new EmpresaDao();
 
     public void submenuFuncionarios(Scanner scanner) {
 
@@ -33,10 +37,12 @@ public class SubmenuFuncionarios {
             limparTela();
             linhaPadronizadaTitulo("SUBMENU FUNCIONÁRIOS");
             System.out.println("    1. Cadastrar Funcionário");
-            // System.out.println("    2. Buscar Funcionário");
-            // System.out.println("    3. Listar Funcionários");
-            // System.out.println("    4. Remover Funcionario");
-            // System.out.println("    5. Atualizar Funcionário\n");
+            System.out.println("    2. Buscar Funcionário");
+            System.out.println("    3. Listar Funcionários");
+            System.out.println("    4. Remover Funcionario");
+            System.out.println("    5. Atualizar Funcionário\n");
+            System.out.println("    6. Registrar Funcionário na Empresa");
+            System.out.println("    7. Demitir Funcionário da Empresa\n");
 
             System.out.println("\n0. Voltar ao Menu Principal");
             
@@ -47,7 +53,7 @@ public class SubmenuFuncionarios {
                     limparTela();
                     linhaPadronizadaTitulo("CADASTRAR FUNCIONÁRIO"); 
 
-                    // -----------------------------------conf se há essa pessoa
+                    // -----------------------------------confirma pessoa
                     int id = -1;
                     try {
                         id = entradaInt(scanner, "Digite o ID da pessoa que se tornará funcionário(a): ");
@@ -55,16 +61,15 @@ public class SubmenuFuncionarios {
                         System.out.println(e.getMessage());
                     }
 
-                    Pessoa pessoaEncontrada = pessoaDao.buscarPessoa(id); // realizado com orientação
-
+                    Pessoa pessoaEncontrada = pessoaDao.buscarPessoa(id);
                     if (pessoaEncontrada == null){
                         limparTela();
                         System.out.println("Pessoa não encontrada, realize o cadastro dessa pessoa no menu principal!");
                         pausarExecucao(scanner);
-                        break;
+                        return;
                     }
 
-                    // -----------------------------------conf se há essa conta para essa pessoa
+                    // -----------------------------------confirma conta
                     int nrConta = -1;
                     nrConta = entradaInt(scanner, "Digite o número da Conta Poupanca: ");
 
@@ -88,174 +93,271 @@ public class SubmenuFuncionarios {
                         pausarExecucao(scanner);
                     }
                     
-                    
-                    
-                    
                     limparTela();
                     linhaPadronizadaTitulo("CADASTRAR FUNCIONÁRIO");                 
                     
                     double salario = entradaDouble(scanner, "Digite o salário do funcionário: ");
                     String cargo = entradaStringCargo(scanner, "Digite o cargo do funcionário");
-                    
-
-                    //------ teste quem ta vindo da busca da conta poupança-----------------------------
-                    limparTela();
-                    System.out.println("Conta poupança encontrada: NOME: " + contaPoupancaEncontrada.getTitular() + ", ID da CONTA: " + contaPoupancaEncontrada.getId());
-                    pausarExecucao(scanner);
-                    //------------------------------verifica ambos pra debug  AMBOS CORRETOS
-                    limparTela();
-                    System.out.println("Pessoa encontrada: NOME: " + pessoaEncontrada.getNome() + ", ID da PESSOA: " + pessoaEncontrada.getId());
-                    pausarExecucao(scanner);
-                    //------------------------------------------------- entradas manuais
-                    limparTela();
-                    System.out.println(salario + " é o salario");
-                    pausarExecucao(scanner);
-                    //--------------------------------------------
-                    limparTela();
-                    System.out.println(cargo + " é o cargo");
-                    pausarExecucao(scanner);
-                    //----------------------------------------------------------------------------------
-
-
+                    Empresa empresa = null; // Add, para manipular na empresa
 
                     try {
-                        funcionarioDao.criarPersistenciaFuncionario(pessoaEncontrada, salario, cargo, contaPoupancaEncontrada); // passo a pessoa e a conta
-                        System.out.println("FOII");
+                        Funcionario funcPersistido = funcionarioDao.criarPersistenciaFuncionario(pessoaEncontrada, salario, cargo, contaPoupancaEncontrada, empresa); // passo: pessoa, conta e (empresa = null)
+                        
+                        limparTela();
+                        linhaPadronizadaTitulo("CADASTRAR FUNCIONÁRIO");
+                        System.out.println("Persistido com sucesso! " + funcPersistido.toString());
+                        
                         pausarExecucao(scanner);
                     } catch (Exception e) {
-                        System.out.println("FALHOUU!!!!");
+                        System.out.println("Erro ao persistir o dado!");
                         pausarExecucao(scanner);
-                    } // analisar parece que nao ta salvando só pq ele passa nesse try catch!==========================
-                    
-                    
+                    }
                     break;
 //-----------------------------------------------------------------------------------------
-                // case 2:
-                //     limparTela();
-                //     linhaPadronizadaTitulo("BUSCAR CONTA POUPANÇA");
+                case 2:
+                    limparTela();
+                    linhaPadronizadaTitulo("BUSCAR FUNCIONÁRIO");
 
-                //     int nrConta = -1;
-                //     nrConta = entradaInt(scanner, "Digite o número da Conta Poupanca: ");
+                    int idFuncionario = -1;
                     
-                //     ContaPoupanca contaPoupancaEncontrada = null; // apenas para iniciar
-
-                //     try {
-                //         contaPoupancaEncontrada = buscarContaPoupanca(nrConta);
-
-                //     } catch (NoResultException e) {
-                //         limparTela();                        
-                //         System.out.println("Erro: Conta não encontrada!");
-                //         pausarExecucao(scanner);
+                    idFuncionario = entradaInt(scanner, "Digite o número de identificação ID do funcionário: ");
+                    if (idFuncionario == -1) {
+                        System.out.println("ID inválido! Retornando ao menu...");
+                        pausarExecucao(scanner);
+                        break;
+                    }                    
                     
-                //     } catch (IllegalArgumentException e) { 
-                //         limparTela();                      
-                //         System.out.println("Erro: Insira apenas números!");
-                //         pausarExecucao(scanner);
+                    Funcionario funcionarioEncontrado = null; // inicia 
 
-                //     } catch (Exception e) {
-                //         limparTela();
-                //         System.out.println("Erro inesperado.");
-                //         pausarExecucao(scanner);
-                //     }
+                    try {
+                        funcionarioEncontrado = funcionarioDao.buscarFuncionario(idFuncionario);
+
+                    } catch (NoResultException e) {
+                        limparTela();                        
+                        System.out.println("Erro: Funcionário não encontrado(a)!");
+                        pausarExecucao(scanner);
+                    
+                    } catch (IllegalArgumentException e) { 
+                        limparTela();                      
+                        System.out.println("Erro: Insira apenas números!");
+                        pausarExecucao(scanner);
+
+                    } catch (Exception e) {
+                        limparTela();
+                        System.out.println("Erro inesperado.");
+                        pausarExecucao(scanner);
+                    }
                    
-                //     if (contaPoupancaEncontrada != null) {
-                //         limparTela();
-                //         linhaPadronizadaTitulo("BUSCAR CONTA POUPANÇA");
-                //         System.out.println(contaPoupancaEncontrada.toString());
-                //         pausarExecucao(scanner);
-                //     }                   
+                    if (funcionarioEncontrado != null) {
+                        limparTela();
+                        linhaPadronizadaTitulo("BUSCAR FUNCIONÁRIO");
+                        System.out.println(funcionarioEncontrado.toString());
+                        pausarExecucao(scanner);
+                    }                   
 
-                //     break;                    
+                    break;                    
 
-                // case 3:
-                //     int i = 1;
-                //     for (ContaPoupanca elementoDaLista : listarContasPoupancas()) { // o que retorna do listar eu apresento no foreach, com dados de cada elemento da lista
+                case 3:
+                    int i = 1;
+                    for (Funcionario elementoDaLista : funcionarioDao.listarFuncionarios()) { // o que retorna do listar eu apresento no foreach, com dados de cada elemento da lista
                         
-                //         if (i == 1) {
-                //             limparTela();
-                //             linhaPadronizadaTitulo("BUSCAR CONTA POUPANÇA");
-                //         }
+                        if (i == 1) {
+                            limparTela();
+                            linhaPadronizadaTitulo("LISTAR FUNCIONÁRIOS"); // apenas printa o título no 1º i
+                        }
 
-                //         System.out.println(i + " Elemento da Lista:\n" +
-                //                                 elementoDaLista.toString());
-                //         ;
-                //         linhaPadronizadaMeio();
+                        System.out.println(i + "º Elemento da Lista:\n" + // printa a posição
+                                                elementoDaLista.toString());
+                        ;
+                        linhaPadronizadaMeio();
 
-                //         i++;
-                //     }
+                        i++;
+                    }
 
-                //     // complemento da mensagem
-                //     System.out.println("\nAtenção. Valores de iteração não remetem a ordem exata da identificação no banco!");
-                //     System.out.println("Para posição do banco considerar o CAMPO ID da conta!");
-                //     pausarExecucao(scanner);
+                    // complemento da mensagem
+                    System.out.println("\nAtenção. Valores de iteração não remetem a ordem exata da identificação no banco!");
+                    System.out.println("Para posição do banco considerar o campo ID do funcionário(a)!");
+                    pausarExecucao(scanner);
 
-                //     break;
+                    break;
 
-                // case 4:
-                //     limparTela();
-                //     linhaPadronizadaTitulo("REMOVER CONTA POUPANÇA");
+                case 4:
+                    limparTela();
+                    linhaPadronizadaTitulo("REMOVER FUNCIONÁRIO");
 
-                //     // chama o remove conta poupança    
-                //     try {
-                //         ContaPoupanca removido = removerContaPoupanca(entradaInt(scanner, "Digite o ID da Conta a ser removida: "));
-                //         limparTela();
-                //         linhaPadronizadaTitulo("REMOVER CONTA POUPANÇA");
-                //         System.out.println(removido.toString() + "\nRemovido com sucesso!");
-                //         linhaPadronizadaFim();
-                //         pausarExecucao(scanner);
-                //     } catch (Exception e) {
-                //         System.out.println("Erro ao remover. Digite um ID válido!");
-                //     }
-                //     break;
+                    // chama o remove   
+                    try {
+                        Funcionario removido = funcionarioDao.removerFuncionario(entradaInt(scanner, "Digite o ID do funcionário a ser removido: "));
+                        limparTela();
+                        linhaPadronizadaTitulo("REMOVER FUNCIONÁRIO");
 
-                // case 5:
-                //     // chamar para atualizar e trato aqui com try-catch
-                //     nrConta = -1;
-                //     limparTela();
-                //     linhaPadronizadaTitulo("ATUALIZANDO CONTA POUPANCA");
+                        System.out.println(removido.toString() + "\nRemovido com sucesso!");
 
-                //     nrConta = entradaInt(scanner, "Digite o número da conta que deseja alterar: ");
-                //     ContaPoupanca cp =null;
-                //     try {
-                //         cp = buscarContaPoupanca(nrConta);
-                //     } catch (Exception e) {
-                //         limparTela();
-                //         linhaPadronizadaTitulo("ATUALIZANDO CONTA POUPANCA");                        
-                //         System.out.println("Erro. Não foi encontrado esse número de Conta Poupança!");
-                //         pausarExecucao(scanner);
-                //     }
+                        linhaPadronizadaFim();
+                        pausarExecucao(scanner);
+                    } catch (Exception e) {
+                        System.out.println("Erro ao remover. Digite um ID válido!");
+                        pausarExecucao(scanner);
+                    }
+                    break;
 
-                //     try {
-                //         limparTela();
-                //         linhaPadronizadaTitulo("ATUALIZANDO CONTA POUPANCA");
+                case 5:
+                    // chamar para atualizar e trato aqui com try-catch
+                    int idfunc = -1;
+                    limparTela();
+                    linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO");
 
-                //         System.out.println("Atenção. É possível alterar somente a Agência da conta!\n");
-                //         agencia = entradaString(scanner, cp.toString() + "\n\nDigite o número da nova agência da conta: ");
+                    idfunc = entradaInt(scanner, "Digite o ID do funcionário(a) que deseja alterar: ");
+                    Funcionario func = null; // apenas inicia o objeto funcionário
+
+                    try {
+                        func = funcionarioDao.buscarFuncionario(idfunc);
                         
-                //         cp.setAgencia(agencia);
-                //         limparTela();
+                        limparTela();
+                        linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO");
+                        System.out.println("Encontrado para alterar: " + func.toString());
+                        pausarExecucao(scanner);
+                    } catch (Exception e) {
+                        limparTela();
+                        linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO");                        
+                        System.out.println("Erro. Não foi encontrado esse funcionário(a)!");
+                        pausarExecucao(scanner);
+                    }
+                    
+                    //               ⬆️ está ok    ⬇️ desenvolvendo
+                    try {
+                        limparTela();
+                        linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO");   
+                        System.out.println("Atenção. É possível alterar apenas o salário e cargo!\n");
+                        
+                        double novoSalario = entradaDouble(scanner, "Digite o novo salário para este funcionário(a): ");
 
-                //         linhaPadronizadaTitulo("ATUALIZANDO CONTA POUPANCA");
-                //         System.out.println("Agência alterada com sucesso para: " + cp.getAgencia());
-                //         pausarExecucao(scanner);
+                        limparTela();
+                        linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO");   
+                        String novoCargo = entradaStringCargo(scanner, "Digite o novo cargo para este funcionário(a): ");
+                        // agencia = entradaString(scanner, cp.toString() + "\n\nDigite o número da nova agência da conta: ");
+                        
+                        func.setSalario(novoSalario); // atribuí de fato ao objeto ambas atualizações
+                        func.setCargo(novoCargo);
 
-                //         if (cp != null){
-                //             atualizarContaPoupanca(cp);
-                //         }
+                        if (func != null){
+                            Funcionario funcAtualizado = funcionarioDao.atualizarFuncionario(func);
 
-                //     } catch (Exception e) {
+                            limparTela();
+                            linhaPadronizadaTitulo("ATUALIZANDO FUNCIONÁRIO"); 
 
-                //         System.out.println("Erro ao alterar a agência!");
-                //         break;
-                //     }
+                            System.out.println("Alterado com sucesso para: " + funcAtualizado.toString());
+                            pausarExecucao(scanner);
+                        }
 
-                //     break;
+                    } catch (Exception e) {
+                        System.out.println("Erro ao atualizar!");
+                        pausarExecucao(scanner);
+                        break;
+                    }
+
+                    break;
+                
+                case 6:
+                    // ------ lista empresas
+                    i = 1;
+                    for (Empresa elementoDaLista : empresaDao.listarEmpresas()) { // o que retorna do listar eu apresento no foreach, com dados de cada elemento da lista
+                        
+                        if (i == 1) {
+                            limparTela();
+                            linhaPadronizadaTitulo("REGISTRAR FUNCIONÁRIO"); // apenas printa o título no 1º i
+                        }
+
+                        System.out.println(i + "º Elemento da Lista:\n" + // printa a posição
+                                                elementoDaLista.toString());
+                        ;
+                        linhaPadronizadaMeio();
+
+                        i++;
+                    }
+                    int idEmpresa = entradaInt(scanner, "Digite o ID da empresa para vincular o funcionário(a): ");
+                    
+                    // ----- lista funcionário(a)
+                    limparTela();
+                    linhaPadronizadaTitulo("REGISTRAR FUNCIONÁRIO");
+                    
+                    i = 1;
+                    for (Funcionario elementoDaLista : funcionarioDao.listarFuncionarios()) { // o que retorna do listar eu apresento no foreach, com dados de cada elemento da lista
+                        
+                        if (i == 1) {
+                            limparTela();
+                            linhaPadronizadaTitulo("REGISTRAR FUNCIONÁRIO"); // apenas printa o título no 1º i
+                        }
+
+                        System.out.println(i + "º Elemento da Lista:\n" + // printa a posição
+                                                elementoDaLista.toString());
+                        ;
+                        linhaPadronizadaMeio();
+
+                        i++;
+                    }
+                    idFuncionario = entradaInt(scanner, "Digite o ID do funcionário(a) para vincular na empresa: ");
+
+                    // setar
+                    Funcionario funcEncontrado = funcionarioDao.buscarFuncionario(idFuncionario);
+                    Empresa empresaEncontrada = empresaDao.buscarEmpresa(idEmpresa);
+
+                    if (funcEncontrado != null && empresaEncontrada != null) {
+                        funcEncontrado.setEmpresa(empresaEncontrada);
+                        Funcionario funcRegistrado = funcionarioDao.registrarFuncionario(funcEncontrado);
+
+                        limparTela();
+                        linhaPadronizadaTitulo("REGISTRAR FUNCIONÁRIO");
+                        System.out.println("Registrado com sucesso! " + funcRegistrado.toString());
+                        System.out.println("\nEm: " + empresaEncontrada.toString());
+                        pausarExecucao(scanner);
+                    }
+                    break;
+                
+                case 7:
+                    limparTela();
+                    linhaPadronizadaTitulo("DEMITIR FUNCIONÁRIO");
+
+                    i = 1;
+                    for (Funcionario elementoDaLista : funcionarioDao.listarFuncionarios()) { 
+                        
+                        if (i == 1) {
+                            limparTela();
+                            linhaPadronizadaTitulo("DEMITIR FUNCIONÁRIO");
+                        }
+
+                        System.out.println(i + "º Elemento da Lista:\n" + 
+                                                elementoDaLista.toString());
+                        ;
+                        linhaPadronizadaMeio();
+
+                        i++;
+                    }
+                    idFuncionario = entradaInt(scanner, "Digite o ID do funcionário(a) para demitir da empresa: ");
+
+                    funcEncontrado = funcionarioDao.buscarFuncionario(idFuncionario);
+
+                    if (funcEncontrado != null) {
+                        String nomeEmpresa = funcEncontrado.getEmpresa().getNomeEmpresa();
+
+                        funcEncontrado.setEmpresa(null);
+                        funcionarioDao.demitirFuncionario(funcEncontrado);
+
+                        limparTela();
+                        linhaPadronizadaTitulo("DEMITIR FUNCIONÁRIO");
+                        System.out.println("Demitido com sucesso! " + funcEncontrado.toString());
+                        System.out.println("Da empresa: " + nomeEmpresa);
+                        pausarExecucao(scanner);
+                    }
+                    
+                    break;               
                 
                 case 0:
                     limparTela();
                     System.out.println("Voltando ao Menu...");
                     pausarExecucao(scanner);
                     break;
+                    
                 default:
                     limparTela();
                     System.out.println("Opção inválida. Tente novamente.");

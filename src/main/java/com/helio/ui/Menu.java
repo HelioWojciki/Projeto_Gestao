@@ -16,6 +16,7 @@ public class Menu {
 
     public static void menu(Scanner scanner) {
         SubmenuFuncionarios submenuFuncionarios = new SubmenuFuncionarios();
+        SubmenuEmpresa submenuEmpresa = new SubmenuEmpresa();
 
         int opcao = -1;      
         do {
@@ -41,9 +42,7 @@ public class Menu {
                     submenuFuncionarios.submenuFuncionarios(scanner);
                     break;
                 case 4:
-                    limparTela();
-                    System.out.println("Outra Opção");
-                    pausarExecucao(scanner);
+                    submenuEmpresa.submenuEmpresa(scanner);
                     break;
                 case 0:
                     limparTela();

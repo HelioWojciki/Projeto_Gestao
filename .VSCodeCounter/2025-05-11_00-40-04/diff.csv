@@ -1,0 +1,18 @@
+"filename", "language", "Java", "comment", "blank", "total"
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\EmpresaDao.java", "Java", 54, 0, 19, 73
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\FuncionarioDao.java", "Java", 5, 1, 1, 7
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\Empresa.java", "Java", 36, 0, 10, 46
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\Funcionario.java", "Java", 6, 0, 2, 8
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\Menu.java", "Java", -1, 0, 0, -1
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuEmpresa.java", "Java", 68, 1, 26, 95
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuFuncionarios.java", "Java", 2, 0, -1, 1
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\Validacao.java", "Java", 7, 0, 2, 9
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\EmpresaDao.class", "Java", 23, 0, 0, 23
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\FuncionarioDao.class", "Java", -1, 0, 0, -1
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\Empresa.class", "Java", 19, 0, 0, 19
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\Funcionario.class", "Java", 3, 0, 0, 3
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\Menu.class", "Java", -3, 0, 0, -3
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuEmpresa.class", "Java", 27, 0, 0, 27
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuFuncionarios.class", "Java", -7, 0, 0, -7
+"c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\Validacao.class", "Java", 1, 0, 0, 1
+"Total", "-", 239, 2, 59, 300

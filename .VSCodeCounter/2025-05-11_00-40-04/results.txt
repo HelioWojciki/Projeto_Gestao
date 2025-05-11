@@ -1,0 +1,110 @@
+Date : 2025-05-11 00:40:04
+Directory : c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial
+Total : 51 files,  2411 codes, 61 comments, 432 blanks, all 2904 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Java     |         48 |      2,269 |         48 |        410 |      2,727 |
+| XML      |          3 |        142 |         13 |         22 |        177 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                                      |         51 |      2,411 |         61 |        432 |      2,904 |
+| . (Files)                                                                                                                                              |          1 |        102 |          7 |         12 |        121 |
+| src                                                                                                                                                    |         25 |      1,602 |         51 |        413 |      2,066 |
+| src\main                                                                                                                                               |         23 |      1,577 |         44 |        403 |      2,024 |
+| src\main\Resources                                                                                                                                     |          1 |         20 |          3 |          5 |         28 |
+| src\main\Resources\META-INF                                                                                                                            |          1 |         20 |          3 |          5 |         28 |
+| src\main\java                                                                                                                                          |         22 |      1,557 |         41 |        398 |      1,996 |
+| src\main\java\com                                                                                                                                      |         22 |      1,557 |         41 |        398 |      1,996 |
+| src\main\java\com\helio                                                                                                                                |         22 |      1,557 |         41 |        398 |      1,996 |
+| src\main\java\com\helio (Files)                                                                                                                        |          1 |         12 |          0 |          5 |         17 |
+| src\main\java\com\helio\dao                                                                                                                            |          4 |        285 |          6 |         99 |        390 |
+| src\main\java\com\helio\models                                                                                                                         |          5 |        194 |          3 |         43 |        240 |
+| src\main\java\com\helio\ui                                                                                                                             |          7 |        848 |         28 |        195 |      1,071 |
+| src\main\java\com\helio\utilities                                                                                                                      |          5 |        218 |          4 |         56 |        278 |
+| src\test                                                                                                                                               |          2 |         25 |          7 |         10 |         42 |
+| src\test\java                                                                                                                                          |          2 |         25 |          7 |         10 |         42 |
+| src\test\java\com                                                                                                                                      |          2 |         25 |          7 |         10 |         42 |
+| src\test\java\com\helio                                                                                                                                |          2 |         25 |          7 |         10 |         42 |
+| src\test\java\com\helio (Files)                                                                                                                        |          1 |         11 |          6 |          4 |         21 |
+| src\test\java\com\helio\ui                                                                                                                             |          1 |         14 |          1 |          6 |         21 |
+| target                                                                                                                                                 |         25 |        707 |          3 |          7 |        717 |
+| target\classes                                                                                                                                         |         23 |        673 |          3 |          7 |        683 |
+| target\classes\META-INF                                                                                                                                |          1 |         20 |          3 |          5 |         28 |
+| target\classes\com                                                                                                                                     |         22 |        653 |          0 |          2 |        655 |
+| target\classes\com\helio                                                                                                                               |         22 |        653 |          0 |          2 |        655 |
+| target\classes\com\helio (Files)                                                                                                                       |          1 |         10 |          0 |          0 |         10 |
+| target\classes\com\helio\dao                                                                                                                           |          4 |        109 |          0 |          0 |        109 |
+| target\classes\com\helio\models                                                                                                                        |          5 |        100 |          0 |          0 |        100 |
+| target\classes\com\helio\ui                                                                                                                            |          7 |        300 |          0 |          2 |        302 |
+| target\classes\com\helio\utilities                                                                                                                     |          5 |        134 |          0 |          0 |        134 |
+| target\test-classes                                                                                                                                    |          2 |         34 |          0 |          0 |         34 |
+| target\test-classes\com                                                                                                                                |          2 |         34 |          0 |          0 |         34 |
+| target\test-classes\com\helio                                                                                                                          |          2 |         34 |          0 |          0 |         34 |
+| target\test-classes\com\helio (Files)                                                                                                                  |          1 |         11 |          0 |          0 |         11 |
+| target\test-classes\com\helio\ui                                                                                                                       |          1 |         23 |          0 |          0 |         23 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                                               | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\pom.xml                                                    | XML      |        102 |          7 |         12 |        121 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\Resources\META-INF\Persistence.xml                | XML      |         20 |          3 |          5 |         28 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\App.java                           | Java     |         12 |          0 |          5 |         17 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\ContaPoupancaDao.java          | Java     |         83 |          2 |         27 |        112 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\EmpresaDao.java                | Java     |         54 |          0 |         19 |         73 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\FuncionarioDao.java            | Java     |         85 |          4 |         30 |        119 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\dao\PessoaDao.java                 | Java     |         63 |          0 |         23 |         86 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\ContaBancaria.java          | Java     |         36 |          0 |          9 |         45 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\ContaPoupanca.java          | Java     |         34 |          2 |          8 |         44 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\Empresa.java                | Java     |         36 |          0 |         10 |         46 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\Funcionario.java            | Java     |         60 |          0 |         12 |         72 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\models\Pessoa.java                 | Java     |         28 |          1 |          4 |         33 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\InternoSubMenuPessoa.java       | Java     |        124 |          4 |         15 |        143 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\Menu.java                       | Java     |         50 |          1 |         11 |         62 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\MenuTipoContas.java             | Java     |         36 |          1 |         11 |         48 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuContaPoupanca.java       | Java     |        162 |          3 |         46 |        211 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuEmpresa.java             | Java     |         68 |          1 |         26 |         95 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuFuncionarios.java        | Java     |        206 |          8 |         57 |        271 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\ui\SubmenuPessoa.java              | Java     |        202 |         10 |         29 |        241 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\CabecalhoPadrao.java     | Java     |         21 |          1 |          7 |         29 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\EntityManagerUtil.java   | Java     |         24 |          3 |          7 |         34 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\Pausa.java               | Java     |         11 |          0 |          4 |         15 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\ResetaTerminal.java      | Java     |         10 |          0 |          2 |         12 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\main\java\com\helio\utilities\Validacao.java           | Java     |        152 |          0 |         36 |        188 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\test\java\com\helio\AppTest.java                       | Java     |         11 |          6 |          4 |         21 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\src\test\java\com\helio\ui\SubmenuPessoaTest.java          | Java     |         14 |          1 |          6 |         21 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\META-INF\Persistence.xml                    | XML      |         20 |          3 |          5 |         28 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\App.class                         | Java     |         10 |          0 |          0 |         10 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\ContaPoupancaDao.class        | Java     |         30 |          0 |          0 |         30 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\EmpresaDao.class              | Java     |         23 |          0 |          0 |         23 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\FuncionarioDao.class          | Java     |         27 |          0 |          0 |         27 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\dao\PessoaDao.class               | Java     |         29 |          0 |          0 |         29 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\ContaBancaria.class        | Java     |         26 |          0 |          0 |         26 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\ContaPoupanca.class        | Java     |         14 |          0 |          0 |         14 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\Empresa.class              | Java     |         19 |          0 |          0 |         19 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\Funcionario.class          | Java     |         32 |          0 |          0 |         32 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\models\Pessoa.class               | Java     |          9 |          0 |          0 |          9 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\InternoSubMenuPessoa.class     | Java     |         40 |          0 |          1 |         41 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\Menu.class                     | Java     |         22 |          0 |          0 |         22 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\MenuTipoContas.class           | Java     |         17 |          0 |          0 |         17 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuContaPoupanca.class     | Java     |         66 |          0 |          1 |         67 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuEmpresa.class           | Java     |         27 |          0 |          0 |         27 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuFuncionarios.class      | Java     |         71 |          0 |          0 |         71 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\ui\SubmenuPessoa.class            | Java     |         57 |          0 |          0 |         57 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\CabecalhoPadrao.class   | Java     |         18 |          0 |          0 |         18 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\EntityManagerUtil.class | Java     |         16 |          0 |          0 |         16 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\Pausa.class             | Java     |         13 |          0 |          0 |         13 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\ResetaTerminal.class    | Java     |         18 |          0 |          0 |         18 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\classes\com\helio\utilities\Validacao.class         | Java     |         69 |          0 |          0 |         69 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\test-classes\com\helio\AppTest.class                | Java     |         11 |          0 |          0 |         11 |
+| c:\Users\helio\OneDrive\Área de Trabalho\Estudando Programação Avançada\3\gestaoempresarial\target\test-classes\com\helio\ui\SubmenuPessoaTest.class   | Java     |         23 |          0 |          0 |         23 |
+| Total                                                                                                                                                  |          |      2,411 |         61 |        432 |      2,904 |
++--------------------------------------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

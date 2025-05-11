@@ -176,4 +176,13 @@ public class Validacao {
             }
         }
     }
+
+    public static String entradaStringPadrao(Scanner scanner, String texto){
+        while (true) {
+            System.out.println(texto);
+            
+            String valor = scanner.nextLine();  
+            return valor;            
+        }
+    }
 }
