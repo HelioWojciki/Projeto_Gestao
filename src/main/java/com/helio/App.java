@@ -1,6 +1,6 @@
 package com.helio;
 
-import static com.helio.ui.Menu.menu; // import static .método estático
+import static com.helio.ui.Menu.menu;
 
 import java.util.Scanner;
 

@@ -69,14 +69,14 @@ public class SubmenuEmpresa {
 
                 case 3:
                     int i = 1;
-                    for (Empresa elementoDaLista : empresaDao.listarEmpresas()) { // o que retorna do listar eu apresento no foreach, com os dados de cada elemento da lista
+                    for (Empresa elementoDaLista : empresaDao.listarEmpresas()) { 
                         
                         if (i == 1) {
                             limparTela();
-                            linhaPadronizadaTitulo("LISTAR EMPRESAS"); // printa o título no 1º i
+                            linhaPadronizadaTitulo("LISTAR EMPRESAS");
                         }
 
-                        System.out.println(i + "º Elemento da Lista:\n" + // printa a posição
+                        System.out.println(i + "º Elemento da Lista:\n" + 
                                                 elementoDaLista.toString());
                         ;
                         linhaPadronizadaMeio();

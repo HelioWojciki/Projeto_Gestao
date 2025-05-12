@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "funcionarios")
-public class Funcionario  { //extends Pessoa (removido pra evitar criar a nova tabela nula sem sentido)
+public class Funcionario  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,20 +30,20 @@ public class Funcionario  { //extends Pessoa (removido pra evitar criar a nova t
     private ContaPoupanca conta;
 
     @OneToOne
-    @JoinColumn(name = "id_pessoa") // ----------criado agora one to one e id_pessoa
-    private Pessoa pessoa;  // <- aqui está o campo que permite setar a pessoa como pessoa.setPessoa(pessoa) na classe funcionarioDAO
+    @JoinColumn(name = "id_pessoa")
+    private Pessoa pessoa;
 
     @ManyToOne
     @JoinColumn(name = "id_empresa")
     private Empresa empresa;
     
-    private double salario; // passar esse com this.
+    private double salario;
     private String cargo;
 
-    public Funcionario (Pessoa pessoa, double salario, String cargo, ContaPoupanca conta, Empresa empresa){ // add Empresa empresa
+    public Funcionario (Pessoa pessoa, double salario, String cargo, ContaPoupanca conta, Empresa empresa){
         super(); 
         this.conta = conta;
-        this.pessoa = pessoa; // tanto a (ContaPoupanca conta e Pessoa pessoa) - precisam ser atribuídas no construtor com this.
+        this.pessoa = pessoa;
         this.salario = salario;
         this.cargo = cargo;
         this.empresa = empresa;
@@ -51,7 +51,7 @@ public class Funcionario  { //extends Pessoa (removido pra evitar criar a nova t
  
     public void depositarSalario(){
         if (conta != null) {
-            conta.depositar(this.salario);  // Chama o método depositar da conta
+            conta.depositar(this.salario);
         } else {
             System.out.println("Erro: Funcionário não possui uma conta vinculada.");
         }  

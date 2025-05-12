@@ -10,7 +10,6 @@ public class SubmenuPessoaTest {
 
     @Test
     public void deveLancarExcecaoSeCpfForInvalido(){
-        //teste para o campo cpf vazio
         Exception exceptionCpfVazio = assertThrows(Exception.class, ()->{
             criarPersistenciaPessoa(0, "nomeTeste1", 20, "Rua enderecoTeste1", "");
         });

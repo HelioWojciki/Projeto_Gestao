@@ -53,7 +53,6 @@ public class SubmenuFuncionarios {
                     limparTela();
                     linhaPadronizadaTitulo("CADASTRAR FUNCIONÁRIO"); 
 
-                    // -----------------------------------confirma pessoa
                     int id = -1;
                     try {
                         id = entradaInt(scanner, "Digite o ID da pessoa que se tornará funcionário(a): ");
@@ -69,7 +68,6 @@ public class SubmenuFuncionarios {
                         return;
                     }
 
-                    // -----------------------------------confirma conta
                     int nrConta = -1;
                     nrConta = entradaInt(scanner, "Digite o número da Conta Poupanca: ");
 
@@ -98,10 +96,10 @@ public class SubmenuFuncionarios {
                     
                     double salario = entradaDouble(scanner, "Digite o salário do funcionário: ");
                     String cargo = entradaStringCargo(scanner, "Digite o cargo do funcionário");
-                    Empresa empresa = null; // Add, para manipular na empresa
+                    Empresa empresa = null;
 
                     try {
-                        Funcionario funcPersistido = funcionarioDao.criarPersistenciaFuncionario(pessoaEncontrada, salario, cargo, contaPoupancaEncontrada, empresa); // passo: pessoa, conta e (empresa = null)
+                        Funcionario funcPersistido = funcionarioDao.criarPersistenciaFuncionario(pessoaEncontrada, salario, cargo, contaPoupancaEncontrada, empresa); 
                         
                         limparTela();
                         linhaPadronizadaTitulo("CADASTRAR FUNCIONÁRIO");
@@ -127,7 +125,7 @@ public class SubmenuFuncionarios {
                         break;
                     }                    
                     
-                    Funcionario funcionarioEncontrado = null; // inicia 
+                    Funcionario funcionarioEncontrado = null; 
 
                     try {
                         funcionarioEncontrado = funcionarioDao.buscarFuncionario(idFuncionario);
@@ -166,7 +164,7 @@ public class SubmenuFuncionarios {
                             linhaPadronizadaTitulo("LISTAR FUNCIONÁRIOS"); // apenas printa o título no 1º i
                         }
 
-                        System.out.println(i + "º Elemento da Lista:\n" + // printa a posição
+                        System.out.println(i + "º Elemento da Lista:\n" + 
                                                 elementoDaLista.toString());
                         ;
                         linhaPadronizadaMeio();
@@ -174,7 +172,6 @@ public class SubmenuFuncionarios {
                         i++;
                     }
 
-                    // complemento da mensagem
                     System.out.println("\nAtenção. Valores de iteração não remetem a ordem exata da identificação no banco!");
                     System.out.println("Para posição do banco considerar o campo ID do funcionário(a)!");
                     pausarExecucao(scanner);
@@ -185,7 +182,6 @@ public class SubmenuFuncionarios {
                     limparTela();
                     linhaPadronizadaTitulo("REMOVER FUNCIONÁRIO");
 
-                    // chama o remove   
                     try {
                         Funcionario removido = funcionarioDao.removerFuncionario(entradaInt(scanner, "Digite o ID do funcionário a ser removido: "));
                         limparTela();

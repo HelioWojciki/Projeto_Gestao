@@ -36,11 +36,11 @@ public class PessoaDao {
 
     public static Pessoa buscarPessoa(int id){
 
-        EntityManager em = EntityManagerUtil.getEntityManager();// não chama et, apenas em
+        EntityManager em = EntityManagerUtil.getEntityManager();
         Pessoa pessoa = new Pessoa();
-        pessoa = em.find(Pessoa.class, id);//JPA não retorna exception, apenas NULL
+        pessoa = em.find(Pessoa.class, id);
         
-        if (pessoa == null) {// por isso que foi tratado com if mesmo
+        if (pessoa == null) {
             return null;
         }
         return pessoa;
@@ -76,7 +76,7 @@ public class PessoaDao {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
-        em.merge(pessoa);//o merge se encarrega de encontrar o objeto pelo ID no BD
+        em.merge(pessoa);
         et.commit();
 
 

@@ -17,13 +17,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @MappedSuperclass
 public abstract class ContaBancaria {
-    @Id // talvez por aqui, criou certo depois que excluí o Silvio ele deu erro
+    @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String titular;
     private double saldo;
 
-    @Column(unique = true) // apenas um númeno de conta existirá
+    @Column(unique = true) 
     private String conta;
     private String agencia;
     

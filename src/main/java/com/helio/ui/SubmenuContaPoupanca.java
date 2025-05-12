@@ -47,7 +47,7 @@ public class SubmenuContaPoupanca {
                     limparTela();
                     linhaPadronizadaTitulo("CADASTRAR CONTA POUPANÇA"); 
 
-                    int id = -1; // ------------ revisar esse try... --------------------
+                    int id = -1;
                     try {
                         id = entradaInt(scanner, "Digite o ID da pessoa que abrirá a conta: ");
                     } catch (InputMismatchException e) {
@@ -81,7 +81,7 @@ public class SubmenuContaPoupanca {
                     int nrConta = -1;
                     nrConta = entradaInt(scanner, "Digite o número da Conta Poupanca: ");
                     
-                    ContaPoupanca contaPoupancaEncontrada = null; // apenas para iniciar
+                    ContaPoupanca contaPoupancaEncontrada = null;
 
                     try {
                         contaPoupancaEncontrada = buscarContaPoupanca(nrConta);
@@ -113,7 +113,7 @@ public class SubmenuContaPoupanca {
 
                 case 3:
                     int i = 1;
-                    for (ContaPoupanca elementoDaLista : listarContasPoupancas()) { // o que retorna do listar eu apresento no foreach, com dados de cada elemento da lista
+                    for (ContaPoupanca elementoDaLista : listarContasPoupancas()) {
                         
                         if (i == 1) {
                             limparTela();
@@ -128,7 +128,6 @@ public class SubmenuContaPoupanca {
                         i++;
                     }
 
-                    // complemento da mensagem
                     System.out.println("\nAtenção. Valores de iteração não remetem a ordem exata da identificação no banco!");
                     System.out.println("Para posição do banco considerar o CAMPO ID da conta!");
                     pausarExecucao(scanner);
@@ -138,8 +137,7 @@ public class SubmenuContaPoupanca {
                 case 4:
                     limparTela();
                     linhaPadronizadaTitulo("REMOVER CONTA POUPANÇA");
-
-                    // chama o remove conta poupança    
+ 
                     try {
                         ContaPoupanca removido = removerContaPoupanca(entradaInt(scanner, "Digite o ID da Conta a ser removida: "));
                         limparTela();
@@ -153,7 +151,7 @@ public class SubmenuContaPoupanca {
                     break;
 
                 case 5:
-                    // chamar para atualizar e trato aqui com try-catch
+                
                     nrConta = -1;
                     limparTela();
                     linhaPadronizadaTitulo("ATUALIZANDO CONTA POUPANCA");

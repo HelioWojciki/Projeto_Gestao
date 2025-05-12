@@ -10,7 +10,6 @@ import static com.helio.utilities.CabecalhoPadrao.linhaPadronizadaTitulo;
 
 import java.util.Scanner;
 
-import com.helio.models.Funcionario;
 
 public class Menu {    
 
@@ -30,7 +29,6 @@ public class Menu {
             
             opcao = entradaIntMenu(scanner, "\nEscolha uma opção: ");
 
-            // Criado dubmenus para organizar
             switch (opcao) {
                 case 1:
                     submenuPessoa(scanner);

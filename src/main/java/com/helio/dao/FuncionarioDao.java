@@ -14,23 +14,21 @@ import jakarta.persistence.TypedQuery;
 
 public class FuncionarioDao {
 
-    // alterado para retornar o objeto, para print
-    public Funcionario criarPersistenciaFuncionario(Pessoa pessoa, double salario, String cargo, ContaPoupanca contaPoupanca, Empresa empresa){ // add Empresa empresa
+    public Funcionario criarPersistenciaFuncionario(Pessoa pessoa, double salario, String cargo, ContaPoupanca contaPoupanca, Empresa empresa){ 
     
-        // Funcionario f10 = new Funcionario(0, contaPoupanca, pessoa, salario, cargo, empresa); <- Anteriormente utilizava este
         Funcionario f = new Funcionario(0, contaPoupanca, pessoa, empresa, salario, cargo);
         
         EntityManager em = EntityManagerUtil.getEntityManager();
 
         try {
             em.getTransaction().begin();
-            em.persist(f); // persiste o funcionário
-            em.getTransaction().commit(); // Finaliza a transação
+            em.persist(f); 
+            em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback(); // Reverte caso de erro
+            em.getTransaction().rollback();
             e.printStackTrace();
         } finally {
-            em.close(); // fecha
+            em.close();
         }
         
         return f;
@@ -38,11 +36,11 @@ public class FuncionarioDao {
 
     public Funcionario buscarFuncionario(int id){
 
-        EntityManager em = EntityManagerUtil.getEntityManager();// não chama et, apenas em
+        EntityManager em = EntityManagerUtil.getEntityManager();
         Funcionario func = new Funcionario();
-        func = em.find(Funcionario.class, id);//JPA não retorna exception, apenas NULL
+        func = em.find(Funcionario.class, id);
         
-        if (func == null) {// por isso que foi tratado com if mesmo
+        if (func == null) {
             return null;
         }
         return func;
@@ -60,9 +58,6 @@ public class FuncionarioDao {
     }
 
     public Funcionario removerFuncionario(int id){
-
-        // abre o em
-        // um try com if para !null remove
 
         EntityManager em = EntityManagerUtil.getEntityManager();
         em.getTransaction().begin();
@@ -105,11 +100,11 @@ public class FuncionarioDao {
             
         } catch (Exception e) {
             System.out.println("Erro ao atualizar funcionário(a)!");
-            em.getTransaction().rollback(); // volta ao estado anterior tmb
+            em.getTransaction().rollback(); 
             return null;
         } finally {
-            if (em.isOpen()) { // se aberto
-                em.close(); // fecha o em
+            if (em.isOpen()) { 
+                em.close(); 
             }
         }
         

@@ -47,7 +47,6 @@ public class SubmenuPessoa {
             switch (opcao) {
                 case 1:                    
                     do {
-                        // While sempre verdadeiro, até que o validarNome() retorne ok executando o break
                         limparTela();
                         linhaPadronizadaTitulo("CADASTRAR PESSOA");
                         System.out.println("Digite o nome da pessoa: ");
@@ -113,7 +112,6 @@ public class SubmenuPessoa {
                         }                 
                     } while (true);
 
-                    // finaliza persistindo o dado no banco
                     try {
                         criarPersistenciaPessoa(0, nome, idade, endereco, cpf);
                     } catch (Exception e) {
@@ -125,7 +123,7 @@ public class SubmenuPessoa {
                 case 2:
                     limparTela();
                     linhaPadronizadaTitulo("BUSCAR PESSOA");
-                    //--------teste 1 id
+
                     int id = -1;
                     try {
                         System.out.println("Digite o ID da pessoa pra buscar: ");
@@ -135,7 +133,6 @@ public class SubmenuPessoa {
                         System.out.println("Falha na inserção do dado, tente novamente.");
                     }
 
-                    //caso retorne null dessa busca, if é verdadeiro rodando a mnsg e saindo
                     Pessoa pessoaEncontrada = null;
                     pessoaEncontrada = buscarPessoa(id);
                     if (pessoaEncontrada == null){
@@ -157,7 +154,6 @@ public class SubmenuPessoa {
                 case 3:
                     limparTela();
                     System.out.println("Listar Todas as Pessoas");
-                    // System.out.println(buscarTodasAsPessoas());
                     int quantidadePessoas = buscarTodasAsPessoas().size();
                     int contador = 0;
                     for (Pessoa pessoa : buscarTodasAsPessoas()) {    
@@ -180,7 +176,6 @@ public class SubmenuPessoa {
 
                     pausarExecucao(scanner);
                     break;
-                    //editar pessoa
                 case 4:
                     limparTela();
                     linhaPadronizadaTitulo("REMOVER PESSOA");
@@ -196,7 +191,7 @@ public class SubmenuPessoa {
                         pausarExecucao(scanner);
                         break;
                     }
-                    //chamo de fato pessoaDao|removerPessoa()
+
                     removerPessoa(pessoaEncontrada.getId());
                     limparTela();
                     linhaPadronizadaTitulo("REMOVER PESSOA");
@@ -218,11 +213,9 @@ public class SubmenuPessoa {
                         pausarExecucao(scanner);
                         break;
                     }
-                    //novos dados desta pessoa pra atualizar no banco
-                    //atualizar a pessoa feito para CPF falta os outros
+
                     System.out.println();
-                    //chama internoSubMenu()
-                    internoSubMenuPessoa(pessoaEncontrada, scanner);//passo a pessoa p/ alterar
+                    internoSubMenuPessoa(pessoaEncontrada, scanner);
                     atualizarPessoa(pessoaEncontrada);//merge busca o ID automaticamente Obj
                     break;
                 case 0:

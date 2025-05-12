@@ -26,10 +26,7 @@ public class MenuTipoContas {
                 case 1:
                     submenuContaPoupanca(scanner);
                     break;
-                case 2:
-                    //repete para cc
-                    break;
-                
+                                    
                 case 0:
                     limparTela();
                     System.out.println("Voltando...");

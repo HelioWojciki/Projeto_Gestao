@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.helio.models.Empresa;
-import com.helio.models.Funcionario;
 import com.helio.utilities.EntityManagerUtil;
 
 import jakarta.persistence.EntityManager;
@@ -23,13 +22,13 @@ public class EmpresaDao {
             empresa.setNomeEmpresa(nomeEmpresa);
             empresa.setCnpj(cnpj);
             
-            em.persist(empresa); // persiste a empresa
-            em.getTransaction().commit(); // Finaliza a transação
+            em.persist(empresa);
+            em.getTransaction().commit(); 
         } catch (Exception e) {
-            em.getTransaction().rollback(); // Reverte caso de erro
+            em.getTransaction().rollback();
             e.printStackTrace();
         } finally {
-            em.close(); // fecha
+            em.close(); 
         }        
         return empresa;
     }
@@ -98,7 +97,7 @@ public class EmpresaDao {
 
         } catch (Exception e) {
             System.out.println("Erro ao atualizar funcionário(a)!");
-            em.getTransaction().rollback(); // volta ao estado anterior tmb
+            em.getTransaction().rollback(); 
             return null;
         } finally {
             if (em.isOpen()) {

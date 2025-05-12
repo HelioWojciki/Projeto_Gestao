@@ -48,7 +48,7 @@ public class ContaPoupancaDao {
         query.setParameter("conta", conta); // informa para a query
 
         // se não achar ele retorna NoResultException e não null
-        return query.getSingleResult(); // apenas retornar, quem vai tratar é o SubmenuContaPoupanca, melhor
+        return query.getSingleResult(); 
     }
 
     public static List<ContaPoupanca> listarContasPoupancas(){
@@ -70,9 +70,9 @@ public class ContaPoupancaDao {
         try {
             ContaPoupanca cp = em.find(ContaPoupanca.class, id);
             if (cp != null) {   
-                em.remove(cp); // remove a conte que retornou da busca
-                em.getTransaction().commit(); // fecha o em
-                return cp; // retorna pra ser exibido como removido
+                em.remove(cp);
+                em.getTransaction().commit(); 
+                return cp; 
             }
         } catch (Exception e) {
             System.out.println("Conta Poupança não encontrada!");
@@ -98,10 +98,10 @@ public class ContaPoupancaDao {
             }
         } catch (Exception e) {
             System.out.println("Erro ao atualizar a Conta Poupança!");
-            em.getTransaction().rollback(); // volta ao estado anterior tmb
+            em.getTransaction().rollback();
             return null;
         } finally {
-            if (em.isOpen()) { // se ainda estiver aberto ele vai fechar o em
+            if (em.isOpen()) { 
                 em.close();
             }
         }

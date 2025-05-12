@@ -31,7 +31,6 @@ public class InternoSubMenuPessoa {
             opcao = scanner.nextInt();
             scanner.nextLine();
 
-            //usuário vai digitar o que fazer com a pessoa
             switch (opcao) {
                 case 1:
                     limparTela();
@@ -59,7 +58,7 @@ public class InternoSubMenuPessoa {
                     try {
                         idade = scanner.nextInt();
                         pausarExecucao(scanner);
-                    } catch (InputMismatchException e){ // exceção, caso o usuário digite no scanner uma letra
+                    } catch (InputMismatchException e){ 
                         scanner.nextLine();
                         exibirErro(scanner, "ATUALIZAR CADASTRO DE PESSOA", "Entrada inválida. Por favor, insira um número inteiro.");
                         break;
@@ -75,7 +74,7 @@ public class InternoSubMenuPessoa {
                         System.out.println("Alterado idade para " + pessoa.getIdade() + " com sucesso!");
                         pausarExecucao(scanner);
                         break;
-                    } catch (IllegalArgumentException e) { // exceção, caso o usuário digite no scanner um dado fora do intervalo entre 1 e 100
+                    } catch (IllegalArgumentException e) { 
                         exibirErro(scanner, "ATUALIZAR CADASTRO DE PESSOA", e.getMessage());
                         break;
                     }
@@ -84,7 +83,7 @@ public class InternoSubMenuPessoa {
                     limparTela();
                     System.out.println("Digite o endereço: ");
                     String endereco = scanner.nextLine();
-                    try {// tenta fazer a atualização, não atualizando ...
+                    try {
                         validarEndereco(endereco);
                         pessoa.setEndereco(endereco);
                         atualizarPessoa(pessoa);
@@ -93,7 +92,7 @@ public class InternoSubMenuPessoa {
                         System.out.println("Alterado endereço para " + pessoa.getEndereco() + " com sucesso!");
                         pausarExecucao(scanner);                    
                         break; 
-                    } catch (IllegalArgumentException e) { // try resultou inválido, então executa o bloco catch
+                    } catch (IllegalArgumentException e) {
                         exibirErro(scanner, "ATUALIZAR CADASTRO DE PESSOA", e.getMessage());
                         break;
                     }      
@@ -102,7 +101,7 @@ public class InternoSubMenuPessoa {
                     limparTela();
                     System.out.println("Digite o CPF: ");
                     String cpf = scanner.nextLine();
-                    try { // tenta fazer a atualização, não atualizando ...
+                    try { 
                         validarCpf(cpf);
                         pessoa.setCpf(cpf);
                         atualizarPessoa(pessoa);
@@ -111,7 +110,7 @@ public class InternoSubMenuPessoa {
                         System.out.println("Alterado CPF para " + pessoa.getCpf() + " com sucesso!");
                         pausarExecucao(scanner);
                         break;
-                    } catch (IllegalArgumentException e) { // roda o catch
+                    } catch (IllegalArgumentException e) {
                         exibirErro(scanner, "ATUALIZAR CADASTRO DE PESSOA", e.getMessage());
                         break;
                     }    
@@ -130,12 +129,11 @@ public class InternoSubMenuPessoa {
         } while (opcao != 0);        
     }
 
-    // recebe scanner para poder pausar a aplicação
     public static void exibirErro(Scanner scanner, String titulo, String mensagem) {
         limparTela();
-        // mantém o padrão com "=== TXT ==="
+        
         linhaPadronizadaTitulo(titulo);
-        // imprime o erro da exceção com uso de e.getMessage() ou texto alternativo qualquer
+        
         System.out.println(mensagem);
         pausarExecucao(scanner);
     }
